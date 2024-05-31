@@ -87,13 +87,13 @@ public class main {
                     Long endTimeSearch = System.currentTimeMillis();
                    
                     algoritmosSearch.add(new Algoritmo("Arvore AVL", dataBaseNames[vectors.indexOf(ds)], dataBaseSearchName[vectorsToSearch.indexOf(data)], (endTimeSearch - startTimeSearch) / averageTime));
-                    try {
-                        gerarCsvBusca(algoritmosSearch, "ResultsSearch");
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
 
                 });
+                try {
+                    gerarCsvBusca(algoritmosSearch, "ResultsSearch");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
