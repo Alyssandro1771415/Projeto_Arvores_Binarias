@@ -1,0 +1,16 @@
+Algoritmo,Base de Dados,Base de Dados Pesquisa,Tempo
+Arvore AVL,3M desordenado,1M não repetidos,1.7916666666666668E7
+Arvore AVL,3M desordenado,1M não repetidos,1.7916666666666668E7
+Arvore AVL,3M desordenado,1M repetidos,1.4375E7
+Arvore AVL,3M crescente,1M não repetidos,2.4708333333333332E7
+Arvore AVL,3M crescente,1M não repetidos,2.4708333333333332E7
+Arvore AVL,3M crescente,1M repetidos,1.6041666666666666E7
+Arvore AVL,3M decrescente,1M não repetidos,2.6458333333333332E7
+Arvore AVL,3M decrescente,1M não repetidos,2.6458333333333332E7
+Arvore AVL,3M decrescente,1M repetidos,1.85E7
+Arvore AVL,3M desordem 10 finais,1M não repetidos,2.4833333333333332E7
+Arvore AVL,3M desordem 10 finais,1M não repetidos,2.4833333333333332E7
+Arvore AVL,3M desordem 10 finais,1M repetidos,1.45E7
+Arvore AVL,3M desordem 10 iniciais,1M não repetidos,2.6916666666666664E7
+Arvore AVL,3M desordem 10 iniciais,1M não repetidos,2.6916666666666664E7
+Arvore AVL,3M desordem 10 iniciais,1M repetidos,1.9E7

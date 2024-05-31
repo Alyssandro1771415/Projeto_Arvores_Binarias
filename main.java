@@ -25,7 +25,7 @@ public class main {
         double averageTime = totalTime / 10;
         System.out.println("Tempo médio de execução: " + averageTime + " segundos\n\n");
 
-        String[] databaseNames = {
+        String[] dataBaseNames = {
             "1M desordenado",
             "1M crescente",
             "1M decrescente",
@@ -42,20 +42,23 @@ public class main {
             "3M desordem 10 finais",
             "3M desordem 10 iniciais"
         };
+        String[] dataBaseSearchName = {
+            "1M não repetidos",
+            "1M repetidos"
+        };
 
         ArrayList<double[]> vectors = processFiles.process_Files("./DataBases");
+        ArrayList<double[]> vectorsToSearch = processFiles.process_Files("./DataBasesToSearch");
 
-        // Primeira Análise
         for (double[] ds : vectors) {
 
             AVLTree arvore = new AVLTree();
             ArrayList<Algoritmo> algoritmos = new ArrayList<>();
             
-            System.out.printf("%s=> \n", databaseNames[vectors.indexOf(ds)]);
+            System.out.printf("%s=> \n", dataBaseNames[vectors.indexOf(ds)]);
 
             long startTime = System.currentTimeMillis();
             
-            // Executar as operações com as árvores
             for (double data : ds) {
                 arvore.insert(data);
             }
@@ -64,8 +67,34 @@ public class main {
 
             int quantRotations = arvore.countRotations();
 
-            algoritmos.add(new Algoritmo("", (endTime - startTime) / averageTime, (quantRotations), (arvore.getHeight()), databaseNames[vectors.indexOf(ds)]));
+            algoritmos.add(new Algoritmo("Arvore AVL", (endTime - startTime) / averageTime, (quantRotations), (arvore.getHeight()), dataBaseNames[vectors.indexOf(ds)]));
 
+            gerarCsv(algoritmos, "ResultsInsertion");
+
+            ArrayList<Algoritmo> algoritmosSearch = new ArrayList<>();
+
+            // Executar so se a base de dados for de 3 milhoes
+            if(vectors.indexOf(ds) > 9){
+
+                vectorsToSearch.stream().forEach(data -> {
+                    
+                    Long startTimeSearch = System.currentTimeMillis();
+                    for (double dado : data) {
+                        
+                        arvore.search(dado);
+
+                    }
+                    Long endTimeSearch = System.currentTimeMillis();
+                   
+                    algoritmosSearch.add(new Algoritmo("Arvore AVL", dataBaseNames[vectors.indexOf(ds)], dataBaseSearchName[vectorsToSearch.indexOf(data)], (endTimeSearch - startTimeSearch) / averageTime));
+                    try {
+                        gerarCsvBusca(algoritmosSearch, "ResultsSearch");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                });
+            }
         }
     }
 
@@ -96,75 +125,120 @@ public class main {
 
     public static class Algoritmo {
         private String nome;
+        private String nomeBaseBusca;
+        private String nomeBaseDaArvore;
         private double tempo;
         private int rotations;
-        private int heigth;
+        private int height;
         private String dataBase;
 
-        public int getHeigth() {
-            return heigth;
+        
+        public String getNomeBaseDaArvore() {
+            return nomeBaseDaArvore;
         }
 
-        public void setHeigth(int heigth) {
-            this.heigth = heigth;
+        public void setNomeBaseDaArvore(String nomeBaseDaArvore) {
+            this.nomeBaseDaArvore = nomeBaseDaArvore;
         }
 
+        public String getNomeBaseBusca() {
+            return nomeBaseBusca;
+        }
+
+        public void setNomeBaseBusca(String nomeBaseBusca) {
+            this.nomeBaseBusca = nomeBaseBusca;
+        }
+        
+        public int getHeight() {
+            return height;
+        }
+    
+        public void setHeight(int height) {
+            this.height = height;
+        }
+    
         public String getDataBase() {
             return dataBase;
         }
-
+    
         public void setDataBase(String dataBase) {
-            this.dataBase = dataBase;
-        }
-
-        public Algoritmo(String nome, double tempo, int rotations, int heigth,String dataBase) {
-            this.nome = nome;
-            this.tempo = tempo;
-            this.rotations = rotations;
-            this.heigth = heigth;
             this.dataBase = dataBase;
         }
 
         public String getNome() {
             return nome;
         }
-
+    
         public void setNome(String nome) {
             this.nome = nome;
         }
-
+    
         public double getTempo() {
             return tempo;
         }
-
+    
         public void setTempo(double tempo) {
             this.tempo = tempo;
         }
-
+    
         public int getRotations() {
             return rotations;
         }
+    
+        public void setRotations(int rotations) {
+            this.rotations = rotations;
+        }
 
-        public void setRotations(int Rotations) {
-            this.rotations = Rotations;
+        public Algoritmo(String nome, double tempo, int rotations, int height, String dataBase) {
+            this.nome = nome;
+            this.tempo = tempo;
+            this.rotations = rotations;
+            this.height = height;
+            this.dataBase = dataBase;
+        }
+
+        public Algoritmo(String nome, String nomeBaseDaArvore,String nomeBaseBusca, double tempo) {
+            this.nome = nome;
+            this.nomeBaseDaArvore = nomeBaseDaArvore;
+            this.nomeBaseBusca = nomeBaseBusca;
+            this.tempo = tempo;
         }
     }
-
+    
     public static void gerarCsv(List<Algoritmo> algoritmos, String nomeArquivo) throws IOException {
-
         try (RandomAccessFile raf = new RandomAccessFile(nomeArquivo + ".csv", "rw")) {
             try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(raf.getFD()))) {
-
+    
                 if (raf.length() == 0) {
-                    bufferedWriter.write("Algoritmo,Base de Dados,Tempo,Rotations");
+                    bufferedWriter.write("Algoritmo,Base de Dados,Tempo,Rotations,Height");
                     bufferedWriter.newLine();
                 }
-
+    
                 raf.seek(raf.length());
-
+    
                 for (Algoritmo algoritmo : algoritmos) {
                     bufferedWriter.write(
-                            algoritmo.getNome() + "," + algoritmo.getDataBase() + "," + (int) algoritmo.getTempo() + "," + (int) algoritmo.getRotations());
+                            algoritmo.getNome() + "," + algoritmo.getDataBase() + "," + (int) algoritmo.getTempo() + "," + algoritmo.getRotations() + "," + algoritmo.getHeight());
+                    bufferedWriter.newLine();
+                }
+            }
+        }
+    }
+    
+    public static void gerarCsvBusca(List<Algoritmo> algoritmos, String nomeArquivo) throws IOException {
+        try (RandomAccessFile raf = new RandomAccessFile(nomeArquivo + ".csv", "rw")) {
+            try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(raf.getFD()))) {
+    
+                if (raf.length() == 0) {
+                    bufferedWriter.write("Algoritmo,Base de Dados,Base de Dados Pesquisa,Tempo");
+                    bufferedWriter.newLine();
+                }
+    
+                raf.seek(raf.length());
+    
+                for (Algoritmo algoritmo : algoritmos) {
+                    bufferedWriter.write(
+                            algoritmo.getNome() + "," + algoritmo.getNomeBaseDaArvore() + "," + algoritmo.getNomeBaseBusca() + "," + algoritmo.getTempo());
                     bufferedWriter.newLine();
                 }
             }

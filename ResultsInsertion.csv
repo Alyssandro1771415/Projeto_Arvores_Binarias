@@ -1,0 +1,62 @@
+Algoritmo,Base de Dados,Tempo,Rotations,Height
+Arvore AVL,1M desordenado,57829457,699167,23
+Arvore AVL,1M crescente,17984496,999980,19
+Arvore AVL,1M decrescente,11317829,999980,19
+Arvore AVL,1M desordem 10 finais,8062015,970100,20
+Arvore AVL,1M desordem 10 iniciais,8578811,969739,20
+Arvore AVL,2M desordenado,105994832,1397364,24
+Arvore AVL,2M crescente,14832041,1999979,20
+Arvore AVL,2M decrescente,19069767,1999979,20
+Arvore AVL,2M desordem 10 finais,17260981,1940291,21
+Arvore AVL,2M desordem 10 iniciais,21808785,1939840,21
+Arvore AVL,3M desordenado,173746770,2093132,25
+Arvore AVL,3M crescente,24392764,2999978,21
+Arvore AVL,3M decrescente,23617571,2999978,21
+Arvore AVL,3M desordem 10 finais,32041343,2909961,22
+Arvore AVL,3M desordem 10 iniciais,33333333,2909643,22
+Arvore AVL,1M desordenado,54668356,699167,23
+Arvore AVL,1M crescente,14068441,999980,19
+Arvore AVL,1M decrescente,10435149,999980,19
+Arvore AVL,1M desordem 10 finais,6548373,970100,20
+Arvore AVL,1M desordem 10 iniciais,6844106,969739,20
+Arvore AVL,2M desordenado,81918039,1397364,24
+Arvore AVL,2M crescente,14828897,1999979,20
+Arvore AVL,2M decrescente,12843261,1999979,20
+Arvore AVL,2M desordem 10 finais,13941698,1940291,21
+Arvore AVL,2M desordem 10 iniciais,15251373,1939840,21
+Arvore AVL,3M desordenado,133882551,2093132,25
+Arvore AVL,3M crescente,20152091,2999978,21
+Arvore AVL,3M decrescente,19729615,2999978,21
+Arvore AVL,3M desordem 10 finais,22602450,2909961,22
+Arvore AVL,3M desordem 10 iniciais,25982256,2909643,22
+Arvore AVL,1M desordenado,52929591,699167,23
+Arvore AVL,1M desordenado,64479999,699167,23
+Arvore AVL,1M crescente,12106666,999980,19
+Arvore AVL,1M decrescente,12799999,999980,19
+Arvore AVL,1M desordem 10 finais,12159999,970100,20
+Arvore AVL,1M desordem 10 iniciais,12373333,969739,20
+Arvore AVL,2M desordenado,104106666,1397364,24
+Arvore AVL,2M crescente,15839999,1999979,20
+Arvore AVL,2M decrescente,16586666,1999979,20
+Arvore AVL,2M desordem 10 finais,19733333,1940291,21
+Arvore AVL,2M desordem 10 iniciais,21866666,1939840,21
+Arvore AVL,3M desordenado,145973333,2093132,25
+Arvore AVL,3M crescente,24319999,2999978,21
+Arvore AVL,3M decrescente,23893333,2999978,21
+Arvore AVL,3M desordem 10 finais,32639999,2909961,22
+Arvore AVL,3M desordem 10 iniciais,30773333,2909643,22
+Arvore AVL,1M desordenado,46208333,699167,23
+Arvore AVL,1M crescente,10541666,999980,19
+Arvore AVL,1M decrescente,11833333,999980,19
+Arvore AVL,1M desordem 10 finais,6666666,970100,20
+Arvore AVL,1M desordem 10 iniciais,7375000,969739,20
+Arvore AVL,2M desordenado,111166666,1397364,24
+Arvore AVL,2M crescente,13708333,1999979,20
+Arvore AVL,2M decrescente,15041666,1999979,20
+Arvore AVL,2M desordem 10 finais,14375000,1940291,21
+Arvore AVL,2M desordem 10 iniciais,15583333,1939840,21
+Arvore AVL,3M desordenado,112125000,2093132,25
+Arvore AVL,3M crescente,18166666,2999978,21
+Arvore AVL,3M decrescente,20000000,2999978,21
+Arvore AVL,3M desordem 10 finais,23166666,2909961,22
+Arvore AVL,3M desordem 10 iniciais,24416666,2909643,22
