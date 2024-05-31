@@ -8,7 +8,6 @@ public class RedBlackBST {
     private int rotationCount = 0; // Counter for rotations
 
     private class Node {
-
         double key = -1;
         int color = B;
         Node left = nil;
@@ -41,25 +40,27 @@ public class RedBlackBST {
         printTreepre(node.right);
     }
 
-    private Node findNode(Node findNode, Node node) {
-        if (root == nil) {
-            return null;
-        }
-        if (findNode.key < node.key) {
-            if (node.left != nil) {
-                return findNode(findNode, node.left);
-            }
-        } else if (findNode.key > node.key) {
-            if (node.right != nil) {
-                return findNode(findNode, node.right);
-            }
-        } else if (findNode.key == node.key) {
-            return node;
-        }
-        return null;
+    // Versão pública do método search que aceita apenas um double
+    public Node search(double key) {
+        return search(key, root);
     }
 
-    private void insert(Node node) {
+    // Versão privada do método search que realiza a busca recursiva
+    private Node search(double key, Node node) {
+        if (node == nil) {
+            return null;
+        }
+        if (key < node.key) {
+            return search(key, node.left);
+        } else if (key > node.key) {
+            return search(key, node.right);
+        } else {
+            return node;
+        }
+    }
+
+    public void insert(double key) {
+        Node node = new Node(key);
         Node temp = root;
         if (root == nil) {
             root = node;
@@ -203,7 +204,7 @@ public class RedBlackBST {
     }
 
     boolean delete(Node z) {
-        Node result = findNode(z, root);
+        Node result = search(z.key, root);
         if (result == null) {
             return false;
         }
@@ -300,7 +301,6 @@ public class RedBlackBST {
         return rotationCount;
     }
 
-    // Method to calculate the height of the tree
     public int getHeight() {
         return calculateHeight(root);
     }
@@ -319,12 +319,10 @@ public class RedBlackBST {
         System.out.println("Add items");
 
         double item;
-        Node node;
 
         item = scan.nextDouble();
         while (item != -999) {
-            node = new Node(item);
-            insert(node);
+            insert(item); // Chamada corrigida para passar o double diretamente para o método insert()
             item = scan.nextDouble();
         }
         printTree(root);

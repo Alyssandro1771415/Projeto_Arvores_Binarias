@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.Random;
 import Algoritmos.*;
 
-import Algoritmos.AVLTree;
-
 public class main {
     public static void main(String[] args) throws IOException{
 
@@ -52,7 +50,8 @@ public class main {
 
         for (double[] ds : vectors) {
 
-            AVLTree arvore = new AVLTree();
+            // Instanciando a arvore
+            SplayTree arvore = new SplayTree();
             ArrayList<Algoritmo> algoritmos = new ArrayList<>();
             
             System.out.printf("%s=> \n", dataBaseNames[vectors.indexOf(ds)]);
@@ -67,7 +66,8 @@ public class main {
 
             int quantRotations = arvore.countRotations();
 
-            algoritmos.add(new Algoritmo("Arvore AVL", (endTime - startTime) / averageTime, (quantRotations), (arvore.getHeight()), dataBaseNames[vectors.indexOf(ds)]));
+            // Mude o nome da arvore conforme a instanciada
+            algoritmos.add(new Algoritmo("Red Black ", (endTime - startTime) / averageTime, (quantRotations), (arvore.getHeight()), dataBaseNames[vectors.indexOf(ds)]));
 
             gerarCsv(algoritmos, "ResultsInsertion");
 
@@ -86,7 +86,8 @@ public class main {
                     }
                     Long endTimeSearch = System.currentTimeMillis();
                    
-                    algoritmosSearch.add(new Algoritmo("Arvore AVL", dataBaseNames[vectors.indexOf(ds)], dataBaseSearchName[vectorsToSearch.indexOf(data)], (endTimeSearch - startTimeSearch) / averageTime));
+                    // Mude o nome da arvore conforme a instanciada
+                    algoritmosSearch.add(new Algoritmo("Red Black", dataBaseNames[vectors.indexOf(ds)], dataBaseSearchName[vectorsToSearch.indexOf(data)], (endTimeSearch - startTimeSearch) / averageTime));
 
                 });
                 try {

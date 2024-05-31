@@ -151,7 +151,7 @@ public class SplayTree {
         }
     }
 
-    public static Node find(double data) {
+    public static Node search(double data) {
         System.out.println("Searching for node : " + data);
         if (root == null) {
             System.out.println("Empty Tree.");
@@ -192,7 +192,7 @@ public class SplayTree {
 
     public static void delete(double data) {
         System.out.println("Deleting node : " + data);
-        Node node = find(data);
+        Node node = search(data);
         if (node == null) {
             System.out.println("Node not present in the tree.");
             return;
