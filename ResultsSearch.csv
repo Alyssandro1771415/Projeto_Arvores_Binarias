@@ -1,0 +1,32 @@
+Algoritmo,Base de Dados,Base de Dados Pesquisa,Tempo
+Arvore AVL,3M desordenado,1M não repetidos,1.5511153193544121E7
+Arvore AVL,3M desordenado,1M repetidos,1.2840537252394786E7
+Arvore AVL,3M crescente,1M não repetidos,1.9854276087736476E7
+Arvore AVL,3M crescente,1M repetidos,1.3541911135928955E7
+Arvore AVL,3M decrescente,1M não repetidos,2.6220592876738932E7
+Arvore AVL,3M decrescente,1M repetidos,1.224706704325049E7
+Arvore AVL,3M desordem 10 finais,1M não repetidos,1.83975764834732E7
+Arvore AVL,3M desordem 10 finais,1M repetidos,1.6266478914273227E7
+Arvore AVL,3M desordem 10 iniciais,1M não repetidos,1.4108405426475784E7
+Arvore AVL,3M desordem 10 iniciais,1M repetidos,1.1680572752703661E7
+Vermelha e Preta,3M desordenado,1M não repetidos,4.1854177717698194E7
+Vermelha e Preta,3M desordenado,1M repetidos,3.3161650211324245E7
+Vermelha e Preta,3M crescente,1M não repetidos,3.018428842764498E7
+Vermelha e Preta,3M crescente,1M repetidos,2.025974914871409E7
+Vermelha e Preta,3M decrescente,1M não repetidos,3.121096490477576E7
+Vermelha e Preta,3M decrescente,1M repetidos,1.899351482691946E7
+Vermelha e Preta,3M desordem 10 finais,1M não repetidos,3.565989630567581E7
+Vermelha e Preta,3M desordem 10 finais,1M repetidos,1.6461046183330199E7
+Vermelha e Preta,3M desordem 10 iniciais,1M não repetidos,3.2032306086480387E7
+Vermelha e Preta,3M desordem 10 iniciais,1M repetidos,2.1970876610598728E7
+Splay,3M desordenado,1M não repetidos,1.0429252782193959E8
+Splay,3M desordenado,1M repetidos,8.473767885532591E7
+Splay,3M crescente,1M não repetidos,1.0392156862745097E8
+Splay,3M crescente,1M repetidos,5.712771595124536E7
+Splay,3M decrescente,1M não repetidos,1.0095389507154213E8
+Splay,3M decrescente,1M repetidos,4.0911499735029146E7
+Splay,3M desordem 10 finais,1M não repetidos,9.109697933227345E7
+Splay,3M desordem 10 finais,1M repetidos,5.34181240063593E7
+Splay,3M desordem 10 iniciais,1M não repetidos,9.507154213036565E7
+Splay,3M desordem 10 iniciais,1M repetidos,4.901960784313726E7
+

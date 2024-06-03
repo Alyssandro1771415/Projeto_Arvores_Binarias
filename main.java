@@ -67,7 +67,7 @@ public class main {
             int quantRotations = arvore.countRotations();
 
             // Mude o nome da arvore conforme a instanciada
-            algoritmos.add(new Algoritmo("Red Black ", (endTime - startTime) / averageTime, (quantRotations), (arvore.getHeight()), dataBaseNames[vectors.indexOf(ds)]));
+            algoritmos.add(new Algoritmo("Splay", (endTime - startTime) / averageTime, (quantRotations), (arvore.getHeight()), dataBaseNames[vectors.indexOf(ds)]));
 
             gerarCsv(algoritmos, "ResultsInsertion");
 
@@ -87,7 +87,7 @@ public class main {
                     Long endTimeSearch = System.currentTimeMillis();
                    
                     // Mude o nome da arvore conforme a instanciada
-                    algoritmosSearch.add(new Algoritmo("Red Black", dataBaseNames[vectors.indexOf(ds)], dataBaseSearchName[vectorsToSearch.indexOf(data)], (endTimeSearch - startTimeSearch) / averageTime));
+                    algoritmosSearch.add(new Algoritmo("Splay", dataBaseNames[vectors.indexOf(ds)], dataBaseSearchName[vectorsToSearch.indexOf(data)], (endTimeSearch - startTimeSearch) / averageTime));
 
                 });
                 try {

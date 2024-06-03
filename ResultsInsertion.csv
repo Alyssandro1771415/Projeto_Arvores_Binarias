@@ -1,0 +1,46 @@
+Algoritmo,Base de Dados,Tempo,Rotations,Height
+arvore AVL,1M desordenado,42810782,699167,23
+arvore AVL,1M crescente,7849992,999980,19
+arvore AVL,1M decrescente,7553257,999980,19
+arvore AVL,1M desordem 10 finais,8524390,970100,20
+arvore AVL,1M desordem 10 iniciais,8821125,969739,20
+arvore AVL,2M desordenado,75154909,1397364,24
+arvore AVL,2M crescente,11141054,1999979,20
+arvore AVL,2M decrescente,12570778,1999979,20
+arvore AVL,2M desordem 10 finais,13272151,1940291,21
+arvore AVL,2M desordem 10 iniciais,11788476,1939840,21
+arvore AVL,3M desordenado,82573286,2093132,25
+arvore AVL,3M crescente,19584516,2999978,21
+arvore AVL,3M decrescente,14135381,2999978,21
+arvore AVL,3M desordem 10 finais,16050671,2909961,22
+arvore AVL,3M desordem 10 iniciais,20636577,2909643,22
+Vermelha e Preta,1M desordenado,27891377,582836,24
+Vermelha e Preta,1M crescente,5407162,999963,37
+Vermelha e Preta,1M decrescente,4893824,999963,37
+Vermelha e Preta,1M desordem 10 finais,6023168,958520,37
+Vermelha e Preta,1M desordem 10 iniciais,4791156,958479,37
+Vermelha e Preta,2M desordenado,74570934,1165523,25
+Vermelha e Preta,2M crescente,9137420,1999961,39
+Vermelha e Preta,2M decrescente,11327663,1999961,39
+Vermelha e Preta,2M desordem 10 finais,12730788,1916486,39
+Vermelha e Preta,2M desordem 10 iniciais,13517906,1916464,39
+Vermelha e Preta,3M desordenado,117451788,1747099,26
+Vermelha e Preta,3M crescente,19746410,2999960,40
+Vermelha e Preta,3M decrescente,16905939,2999960,40
+Vermelha e Preta,3M desordem 10 finais,25324686,2874947,40
+Vermelha e Preta,3M desordem 10 iniciais,16324155,2874767,40
+Splay,1M desordenado,63570457,25877533,52
+Splay,1M crescente,10829179,30719864,1119031
+Splay,1M decrescente,10058903,34719861,1999999
+Splay,1M desordem 10 finais,18531943,43138828,1800019
+Splay,1M desordem 10 iniciais,36656094,54872935,972011
+Splay,2M desordenado,180335296,116415273,60
+Splay,2M crescente,40190303,128204752,2245371
+Splay,2M decrescente,30629814,137133403,3101893
+Splay,2M desordem 10 finais,46805618,153377649,2695351
+Splay,2M desordem 10 iniciais,64431354,175909741,1995077
+Splay,3M desordenado,497915722,274704366,66
+Splay,3M crescente,64023561,343939652,3365019
+Splay,3M decrescente,46352514,420138575,3472894
+Splay,3M desordem 10 finais,74173085,497609304,3496427
+Splay,3M desordem 10 iniciais,91164476,581594630,3066630

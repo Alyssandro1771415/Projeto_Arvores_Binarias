@@ -1,5 +1,7 @@
 package Algoritmos;
 
+import java.util.Stack;
+
 public class SplayTree {
 
     static class Node {
@@ -19,8 +21,7 @@ public class SplayTree {
     static Node root;
     private static int rotationCount = 0;
 
-    private static void leftRotate(Node node) {
-        System.out.println("Rotating left : " + node.data);
+    private void leftRotate(Node node) {
         rotationCount++;
         Node parent = node.parent;
         Node left = node.left;
@@ -29,9 +30,9 @@ public class SplayTree {
         if (left != null) {
             left.parent = parent;
         }
-        Node gp = node.parent.parent;
-        parent.parent = node;
+        Node gp = parent.parent;
         node.parent = gp;
+        parent.parent = node;
 
         if (gp == null) {
             root = node;
@@ -44,8 +45,7 @@ public class SplayTree {
         }
     }
 
-    private static void rightRotate(Node node) {
-        System.out.println("Rotating right : " + node.data);
+    private void rightRotate(Node node) {
         rotationCount++;
         Node parent = node.parent;
         Node right = node.right;
@@ -69,57 +69,32 @@ public class SplayTree {
         }
     }
 
-    private static void splay(Node node) {
-        System.out.println("Splaying node : " + node.data);
-
-        if (node.parent == null) {
-            root = node;
-            return;
-        }
-
-        if (node.parent.parent == null) {
-            if (node.parent.right == node) {
-                leftRotate(node);
-                root = node;
-            } else {
+    public void splay(Node node) {
+        while (node.parent != null) {
+            if (node.parent.parent == null) { 
+                if (node.parent.left == node) {
+                    rightRotate(node);
+                } else {
+                    leftRotate(node);
+                }
+            } else if (node.parent.left == node && node.parent.parent.left == node.parent) { 
+                rightRotate(node.parent);
                 rightRotate(node);
-                root = node;
+            } else if (node.parent.right == node && node.parent.parent.right == node.parent) { 
+                leftRotate(node.parent);
+                leftRotate(node);
+            } else if (node.parent.left == node && node.parent.parent.right == node.parent) { 
+                rightRotate(node);
+                leftRotate(node);
+            } else { // Zig-Zag step
+                leftRotate(node);
+                rightRotate(node);
             }
-            return;
         }
-
-        if (node.parent.right == node && node.parent.parent.left == node.parent) {
-            leftRotate(node);
-            rightRotate(node);
-            splay(node);
-            return;
-        }
-
-        if (node.parent.left == node && node.parent.parent.right == node.parent) {
-            rightRotate(node);
-            leftRotate(node);
-            splay(node);
-            return;
-        }
-
-        if (node.parent.right == node && node.parent.parent.right == node.parent) {
-            leftRotate(node.parent);
-            leftRotate(node);
-            splay(node);
-            return;
-        }
-
-        if (node.parent.left == node && node.parent.parent.left == node.parent) {
-            rightRotate(node.parent);
-            rightRotate(node);
-            splay(node);
-            return;
-        }
+        root = node;
     }
 
-    // Function to add new elements in the tree.
-    public static void insert(double data) {
-        System.out.println("Inserting data : " + data);
+    public void insert(double data) {
         Node node = new Node(data);
         if (root == null) {
             root = node;
@@ -133,35 +108,29 @@ public class SplayTree {
                 if (temp.left == null) {
                     temp.left = node;
                     node.parent = temp;
-                    splay(node);
-                    return;
+                    break;
                 }
                 temp = temp.left;
-            }
-
-            if (temp.data < data) {
+            } else {
                 if (temp.right == null) {
                     temp.right = node;
                     node.parent = temp;
-                    splay(node);
-                    return;
+                    break;
                 }
                 temp = temp.right;
             }
         }
+        splay(node);
     }
 
-    public static Node search(double data) {
-        System.out.println("Searching for node : " + data);
+    public Node search(double data) {
         if (root == null) {
-            System.out.println("Empty Tree.");
             return null;
         }
 
         Node temp = root;
         while (temp != null) {
             if (temp.data == data) {
-                System.out.println("Found node : " + data);
                 splay(temp);
                 return temp;
             }
@@ -171,49 +140,51 @@ public class SplayTree {
                 temp = temp.right;
             }
         }
-        System.out.println("Node not found.");
         return null;
     }
 
-    public static Node findMin(Node node) {
+    public Node findMin(Node node) {
         if (node == null) {
-            System.out.println("Empty Tree.");
             return null;
         }
-        System.out.println("Finding Minimum.");
         Node min = node;
         while (min.left != null) {
             min = min.left;
         }
         splay(min);
-        System.out.println("Minimum node : " + min.data);
         return min;
     }
 
-    public static void delete(double data) {
-        System.out.println("Deleting node : " + data);
+    public void delete(double data) {
         Node node = search(data);
         if (node == null) {
-            System.out.println("Node not present in the tree.");
             return;
         }
 
-        Node min = findMin(node.right);
-        if (min == null) {
-            root = root.left;
+        splay(node);
+
+        if (node.left != null) {
+            Node leftSubtree = node.left;
+            leftSubtree.parent = null;
+            Node maxNode = leftSubtree;
+            while (maxNode.right != null) {
+                maxNode = maxNode.right;
+            }
+            splay(maxNode);
+            maxNode.right = node.right;
+            if (node.right != null) {
+                node.right.parent = maxNode;
+            }
+            root = maxNode;
+        } else {
+            root = node.right;
             if (root != null) {
                 root.parent = null;
             }
-            return;
-        }
-        root.left = root.left.left;
-        if (root.left != null) {
-            root.left.parent = root;
         }
     }
 
-    // Function for PreOrder Traversal of the tree.
-    private static void preOrder(Node node) {
+    private void preOrder(Node node) {
         if (node == null) {
             return;
         }
@@ -222,29 +193,70 @@ public class SplayTree {
         preOrder(node.right);
     }
 
-    public static void display() {
-        System.out.print("Tree's PreOrder Traversal : ");
+    public void display() {
+        System.out.print("Tree's PreOrder Traversal: ");
         preOrder(root);
         System.out.println();
     }
 
-    // Method to return the number of rotations
-    public static int countRotations() {
+    public int countRotations() {
         return rotationCount;
     }
 
-    // Method to calculate the height of the tree
-    public static int getHeight() {
+    public int getHeight() {
         return calculateHeight(root);
     }
 
-    private static int calculateHeight(Node node) {
+    private int calculateHeight(Node node) {
         if (node == null) {
             return 0;
         }
-        int leftHeight = calculateHeight(node.left);
-        int rightHeight = calculateHeight(node.right);
-        return Math.max(leftHeight, rightHeight) + 1;
+        Stack<Node> stack = new Stack<>();
+        stack.push(node);
+
+        int height = 0;
+        Node prev = null;
+
+        while (!stack.isEmpty()) {
+            Node current = stack.peek();
+
+            if (prev == null || prev.left == current || prev.right == current) {
+                if (current.left != null) {
+                    stack.push(current.left);
+                } else if (current.right != null) {
+                    stack.push(current.right);
+                }
+            } else if (current.left == prev) {
+                if (current.right != null) {
+                    stack.push(current.right);
+                }
+            } else {
+                stack.pop();
+            }
+
+            prev = current;
+
+            height = Math.max(height, stack.size());
+        }
+
+        return height;
+    }
+    
+    private boolean verifyTree(Node node) {
+        if (node == null) {
+            return true;
+        }
+        if (node.left != null && node.left.parent != node) {
+            return false;
+        }
+        if (node.right != null && node.right.parent != node) {
+            return false;
+        }
+        return verifyTree(node.left) && verifyTree(node.right);
+    }
+
+    public boolean verifyTreeStructure() {
+        return verifyTree(root);
     }
 
 }
